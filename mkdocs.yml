@@ -91,30 +91,30 @@ nav:
       - 学习路线: preface/roadmap.md
   - AI 基础:
       - 基础总览: basics/index.md
-      - 什么是 AI: basics/what-is-ai.md
+      - 什么是人工智能: basics/what-is-ai.md
       - 机器学习: basics/machine-learning.md
       - 深度学习: basics/deep-learning.md
-      - 什么是 LLM: basics/what-is-llm.md
+      - 什么是大语言模型: basics/what-is-llm.md
       - 模型、数据、训练与推理: basics/model-data-training.md
-      - Token、Embedding 与上下文窗口: basics/token-embedding-context.md
+      - 词元、向量嵌入与上下文窗口: basics/token-embedding-context.md
       - 温度与采样参数: basics/temperature-sampling.md
       - 为什么模型会胡说: basics/hallucination.md
   - Prompt:
-      - Prompt 总览: prompt/index.md
-      - Prompt 基础: prompt/prompt-basic.md
+      - 提示词总览: prompt/index.md
+      - 提示词基础: prompt/prompt-basic.md
       - 角色、任务、约束与输出格式: prompt/structure.md
-      - Prompt 模板: prompt/templates.md
+      - 提示词模板: prompt/templates.md
       - 让模型稳定输出: prompt/stable-output.md
       - 总结、改写、分类与抽取: prompt/tasks.md
-      - Prompt 常见失败案例: prompt/failure-cases.md
+      - 提示词常见失败案例: prompt/failure-cases.md
   - 工具使用:
       - 工具总览: tools/index.md
-      - Chat 类产品怎么用: tools/chat-products.md
+      - 对话类产品怎么用: tools/chat-products.md
       - 如何选择模型: tools/model-selection.md
-      - API 入门: tools/api.md
+      - 接口入门: tools/api.md
       - 函数调用与工具调用: tools/tool-calling.md
       - 本地与在线模型的差异: tools/local-vs-online.md
-      - Chat、Copilot、Agent 与 Workflow: tools/workflow.md
+      - 对话、编程助手、智能体与工作流: tools/workflow.md
   - RAG:
       - RAG 总览: rag/index.md
       - 为什么需要 RAG: rag/why-rag.md
@@ -124,53 +124,53 @@ nav:
       - 重排: rag/rerank.md
       - 生成: rag/generation.md
       - RAG 常见问题: rag/troubleshooting.md
-  - Agent:
-      - Agent 总览: agent/index.md
-      - Agent 和工作流的区别: agent/workflow-vs-agent.md
+  - Agent智能体:
+      - 智能体总览: agent/index.md
+      - 智能体和工作流的区别: agent/workflow-vs-agent.md
       - 工具调用: agent/tool-use.md
       - 任务拆解: agent/task-planning.md
       - 反思与循环: agent/reflection-loop.md
-      - Agent 常见失败模式: agent/failure-patterns.md
-  - Build:
-      - Build 总览: build/index.md
-      - API 接入: build/api-integration.md
-      - 最小 AI 应用: build/simple-app.md
+      - 智能体常见失败模式: agent/failure-patterns.md
+  - 构建实战:
+      - 构建实战总览: build/index.md
+      - 接口接入: build/api-integration.md
+      - 最小人工智能应用: build/simple-app.md
       - 本地模型: build/local-models.md
       - 部署入门: build/deployment.md
-      - Docker 基础: build/docker.md
-  - Eval:
-      - Eval 总览: eval/index.md
+      - 容器基础: build/docker.md
+  - 评测:
+      - 评测总览: eval/index.md
       - 主观与客观指标: eval/metrics.md
       - 幻觉评测: eval/hallucination.md
       - 输出质量判断: eval/quality.md
       - 简单评测: eval/simple-eval.md
-  - Safety:
-      - Safety 总览: safety/index.md
+  - 安全:
+      - 安全总览: safety/index.md
       - 数据泄露: safety/data-leakage.md
       - 提示注入: safety/prompt-injection.md
       - 越权调用: safety/over-permission.md
       - 使用边界与合规提示: safety/compliance.md
-  - Lab:
-      - Lab 总览: lab/index.md
-      - Prompt 改写: lab/prompt-rewrite.md
+  - 实验:
+      - 实验总览: lab/index.md
+      - 提示词改写: lab/prompt-rewrite.md
       - RAG 基础: lab/rag-basics.md
-      - Agent 拆解: lab/agent-basics.md
-  - Resources:
+      - 智能体拆解: lab/agent-basics.md
+  - 资源:
       - 资源总览: resources/index.md
       - 模型平台: resources/models.md
-      - API 平台: resources/apis.md
+      - 接口平台: resources/apis.md
       - RAG 框架: resources/rag-frameworks.md
-      - Agent 框架: resources/agent-frameworks.md
+      - 智能体框架: resources/agent-frameworks.md
       - 评测工具: resources/eval-tools.md
       - 书单与文章: resources/books-and-articles.md
-  - Events:
-      - Events 总览: events/index.md
+  - 动态:
+      - 动态总览: events/index.md
       - 重要模型发布记录: events/model-releases.md
       - 学习活动公告: events/learning-events.md
       - 项目更新日志: events/project-updates.md
-  - Archive:
+  - 归档:
       - 归档总览: archive/index.md
-  - Community:
+  - 社区:
       - 社区总览: community/index.md
       - 参与贡献: community/contribute.md
       - 贡献方式: contributing.md
@@ -178,7 +178,7 @@ nav:
       - 协作流程: process.md
       - 内容治理: governance.md
       - 发布流程: publishing.md
-  - Changelog: changelog.md
+  - 更新日志: changelog.md
 
 watch:
   - docs
