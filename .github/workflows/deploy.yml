@@ -6,17 +6,23 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Configure Pages
-        id: pages
         uses: actions/configure-pages@v5
 
       - name: Setup Python
@@ -35,6 +41,7 @@ jobs:
 
       - name: Validate helper scripts
         run: |
+          python scripts/check_nav.py
           python scripts/check_links.py
           python scripts/validate_assets.py
 
@@ -43,7 +50,7 @@ jobs:
           set -o pipefail
           python -m mkdocs build --strict --verbose 2>&1 | tee mkdocs-build.log
 
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
@@ -58,9 +65,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -68,17 +72,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  server-deploy:
-    needs: build
-    if: ${{ vars.ENABLE_SERVER_DEPLOY == 'true' }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Server deploy placeholder
-        run: |
-          echo "Set ENABLE_SERVER_DEPLOY=true and add server deployment steps when the Nginx host is ready."

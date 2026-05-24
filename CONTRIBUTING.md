@@ -21,9 +21,31 @@
 
 1. 从主分支创建功能分支
 2. 在本地修改 Markdown 内容
-3. 预览并检查链接
+3. 预览并运行本地检查
 4. 提交 PR
 5. 等待审核后合并
+
+本地检查命令：
+
+```bash
+python scripts/build_local.py
+```
+
+这个命令会检查导航完整性、Markdown 链接、资源引用，并执行严格构建。
+
+## 页面标签
+
+新增页面时，可以在 Markdown 顶部添加标签，便于后续做标签筛选和专题索引：
+
+```yaml
+---
+tags:
+  - Prompt
+  - Lab
+---
+```
+
+可用标签在 `mkdocs.yml` 的 `material/tags` 配置中维护。
 
 ## 写作风格
 

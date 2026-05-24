@@ -15,6 +15,14 @@ mkdocs serve
 
 然后访问 `http://127.0.0.1:8000/`。
 
+## 本地检查
+
+```bash
+python scripts/build_local.py
+```
+
+这会依次执行导航检查、链接检查、资源引用检查和 MkDocs 严格构建。
+
 ## 目录说明
 
 - `docs/`：正文内容
@@ -27,8 +35,7 @@ mkdocs serve
 
 - 仓库是唯一内容源
 - GitHub Actions 负责构建
-- GitHub Pages 负责公开镜像
-- 后续可同步到自有服务器主站
+- GitHub Pages 负责站点发布
 
 ## 贡献方式
 
