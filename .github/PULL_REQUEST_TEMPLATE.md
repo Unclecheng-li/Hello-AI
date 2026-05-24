@@ -1,8 +1,6 @@
 # 变更说明
 
-添加一些文章内容，具体添加的文章有
-
-docs\basics\machine-learning.md
+请简要说明这次改动的目的。
 
 ## 检查项
 
