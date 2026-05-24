@@ -1,0 +1,51 @@
+# WorkBuddy / local assistant state
+.workbuddy/
+
+# Temporary research clone
+research/
+archive/
+
+# MkDocs / build artifacts
+site/
+dist/
+build/
+public/
+coverage/
+
+# Generated analysis exports
+Hello-CTF_横纵分析报告.pdf
+Hello-CTF_横纵分析报告.html
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs / temp
+*.log
+*.tmp
+*.bak

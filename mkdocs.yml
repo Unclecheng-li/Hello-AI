@@ -1,0 +1,112 @@
+site_name: Hello-AI
+site_url: https://hello-ai.example.com/
+site_author: Hello-AI Team
+site_description: 面向中文用户的 AI / LLM 学习入口平台
+
+repo_name: Hello-AI
+repo_url: https://github.com/Hello-AI/Hello-AI
+edit_uri: edit/main/docs/
+
+copyright: Copyright &copy; 2026 Hello-AI Team
+
+theme:
+  name: material
+  language: zh
+  custom_dir: overrides
+  features:
+    - content.action.edit
+    - content.code.copy
+    - navigation.indexes
+    - navigation.instant
+    - navigation.tracking
+    - search.highlight
+    - search.suggest
+    - toc.follow
+  palette:
+    - scheme: default
+      primary: white
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到深色模式
+    - scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: 切换到浅色模式
+  font:
+    text: Noto Sans SC
+    code: Fira Code
+  icon:
+    repo: fontawesome/brands/github
+  logo: assets/images/logo.svg
+  favicon: assets/images/favicon.svg
+
+extra:
+  generator: false
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home: index.md
+  - 前言:
+      - 前言总览: preface/index.md
+      - 新手起步: preface/start.md
+      - 学习路线: preface/roadmap.md
+  - AI 基础:
+      - 基础总览: basics/index.md
+      - 什么是 AI: basics/what-is-ai.md
+      - 什么是 LLM: basics/what-is-llm.md
+  - Prompt:
+      - Prompt 总览: prompt/index.md
+      - Prompt 基础: prompt/prompt-basic.md
+  - 工具使用:
+      - 工具总览: tools/index.md
+  - RAG:
+      - RAG 总览: rag/index.md
+  - Agent:
+      - Agent 总览: agent/index.md
+  - Build:
+      - Build 总览: build/index.md
+  - Eval:
+      - Eval 总览: eval/index.md
+  - Safety:
+      - Safety 总览: safety/index.md
+  - Lab:
+      - Lab 总览: lab/index.md
+  - Resources:
+      - 资源总览: resources/index.md
+  - Archive:
+      - 归档总览: archive/index.md
+  - Community:
+      - 社区总览: community/index.md
+      - 参与贡献: community/contribute.md
+  - Changelog: changelog.md
+
+watch:
+  - docs
+  - overrides

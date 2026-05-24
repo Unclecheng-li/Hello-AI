@@ -1,0 +1,13 @@
+:root {
+  --md-primary-fg-color: #ffffff;
+}
+
+.md-typeset h1,
+.md-typeset h2 {
+  font-weight: 700;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 0.5rem;
+}
