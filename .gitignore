@@ -3,12 +3,12 @@
 
 # Temporary research clone
 research/
-archive/
+/archive/
 
 # MkDocs / build artifacts
 site/
 dist/
-build/
+/build/
 public/
 coverage/
 
