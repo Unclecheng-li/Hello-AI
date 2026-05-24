@@ -1,0 +1,19 @@
+{% include "partials/tags.html" %}
+{% include "partials/actions.html" %}
+{% if "\x3ch1" not in page.content %}
+  <h1>{{ page.title | d(config.site_name, true)}}</h1>
+{% endif %}
+{{ page.content }}
+{% if page.url %}
+  <aside class="hello-feedback">
+    <strong>反馈与共建</strong>
+    <a href="{{ config.repo_url }}/issues/new?template=bug_report.yml&title=%5B%E5%8B%98%E8%AF%AF%5D%20{{ page.title | urlencode }}">勘误</a>
+    <a href="{{ config.repo_url }}/issues/new?template=feature_request.yml&title=%5B%E5%BB%BA%E8%AE%AE%5D%20{{ page.title | urlencode }}">建议</a>
+    {% if page.edit_url %}
+      <a href="{{ page.edit_url }}">编辑本页</a>
+    {% endif %}
+  </aside>
+{% endif %}
+{% include "partials/source-file.html" %}
+{% include "partials/feedback.html" %}
+{% include "partials/comments.html" %}

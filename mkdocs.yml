@@ -43,11 +43,23 @@ theme:
   logo: assets/images/logo.svg
   favicon: assets/images/favicon.svg
 
-extra:
-  generator: false
-
 plugins:
   - search
+
+extra:
+  generator: false
+  analytics:
+    feedback:
+      title: 这页有帮助吗？
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: 有帮助
+          data: helpful
+          note: 感谢反馈。你也可以通过页面下方的共建入口继续补充内容。
+        - icon: material/emoticon-sad-outline
+          name: 需要改进
+          data: needs-improvement
+          note: 感谢反馈。欢迎通过页面下方的勘误或建议入口提出修改建议。
 
 markdown_extensions:
   - admonition
@@ -161,6 +173,11 @@ nav:
   - Community:
       - 社区总览: community/index.md
       - 参与贡献: community/contribute.md
+      - 贡献方式: contributing.md
+      - 关于本站: about.md
+      - 协作流程: process.md
+      - 内容治理: governance.md
+      - 发布流程: publishing.md
   - Changelog: changelog.md
 
 watch:

@@ -33,13 +33,27 @@ jobs:
           python -m pip --version
           python -m mkdocs --version
 
+      - name: Validate helper scripts
+        run: |
+          python scripts/check_links.py
+          python scripts/validate_assets.py
+
       - name: Build site
-        run: python -m mkdocs build --strict --verbose
+        run: |
+          set -o pipefail
+          python -m mkdocs build --strict --verbose 2>&1 | tee mkdocs-build.log
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
+
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mkdocs-build-log
+          path: mkdocs-build.log
 
   deploy:
     needs: build
@@ -54,3 +68,17 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  server-deploy:
+    needs: build
+    if: ${{ vars.ENABLE_SERVER_DEPLOY == 'true' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Server deploy placeholder
+        run: |
+          echo "Set ENABLE_SERVER_DEPLOY=true and add server deployment steps when the Nginx host is ready."

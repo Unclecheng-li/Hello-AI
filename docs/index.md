@@ -9,6 +9,8 @@ Hello-AI 是一条给中文学习者准备的 AI / LLM 入门路径。
 - 新手先看 [新手起步](preface/start.md)
 - 想看路线先看 [学习路线](preface/roadmap.md)
 - 想直接进入基础先看 [AI 基础](basics/index.md)
+- 想了解本站先看 [关于 Hello-AI](about.md)
+- 想参与共建先看 [参与贡献](community/contribute.md)
 
 ## 这站主要解决什么
 

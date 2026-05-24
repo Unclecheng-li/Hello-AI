@@ -1,0 +1,24 @@
+name: 内容勘误
+description: 报告内容错误或过期信息
+title: "[勘误] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: location
+    attributes:
+      label: 位置
+      description: 请说明出错页面或章节。
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 问题
+      description: 说明哪里不对。
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: 来源
+      description: 如有，请附上参考链接或版本信息。
