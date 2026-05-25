@@ -110,9 +110,9 @@ Embedding 不只是外部工具，它是 LLM 处理文字的第一步：
 
 ```mermaid
 flowchart LR
-    A[输入文本<br/>"今天天气很好"] --> B[Tokenizer<br/>切成 Token]
-    B --> C[Embedding 层<br/>每个 Token → 向量]
-    C --> D[Transformer 模型<br/>计算、推理、生成]
+    A["输入文本<br/>今天天气很好"] --> B["Tokenizer<br/>切成 Token"]
+    B --> C["Embedding 层<br/>每个 Token → 向量"]
+    C --> D["Transformer 模型<br/>计算、推理、生成"]
     D --> E[输出 Token]
     E --> F[还原成文字]
 ```
@@ -152,11 +152,11 @@ flowchart LR
 flowchart LR
     subgraph 上下文窗口示意
         direction LR
-        A[用户输入<br/>占 200 Token] --> B[模型回复 1<br/>占 150 Token]
-        B --> C[用户输入 2<br/>占 100 Token]
-        C --> D[模型回复 2<br/>占 180 Token]
+        A["用户输入<br/>占 200 Token"] --> B["模型回复 1<br/>占 150 Token"]
+        B --> C["用户输入 2<br/>占 100 Token"]
+        C --> D["模型回复 2<br/>占 180 Token"]
         D --> E[...]
-        E --> F[累计 Token 数<br/>不能超过窗口上限]
+        E --> F["累计 Token 数<br/>不能超过窗口上限"]
     end
 ```
 
@@ -168,17 +168,17 @@ Token、Embedding、上下文窗口不是孤立的概念，它们组成了 LLM "
 flowchart LR
     subgraph 输入阶段
         A[原始文本] --> B[Tokenizer]
-        B --> C[Token 序列<br/>如 [你, 好, 世界]]
+        B --> C["Token 序列<br/>如：你 / 好 / 世界"]
     end
 
     subgraph 表示阶段
         C --> D[Embedding 层]
-        D --> E[向量序列<br/>每个 Token 变成数字向量]
+        D --> E["向量序列<br/>每个 Token 变成数字向量"]
     end
 
     subgraph 处理阶段
         E --> F[Transformer 网络]
-        F --> G[在上下文窗口内<br/>计算注意力、生成输出]
+        F --> G["在上下文窗口内<br/>计算注意力、生成输出"]
     end
 
     subgraph 输出阶段

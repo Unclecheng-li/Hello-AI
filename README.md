@@ -136,6 +136,8 @@ pip install -r requirements.txt
 
 ### 3. 启动预览
 
+如果只是快速预览 Markdown 与站点导航，可以直接运行：
+
 ```bash
 mkdocs serve
 ```
@@ -144,6 +146,24 @@ mkdocs serve
 
 ```text
 http://127.0.0.1:8000/
+```
+
+如果需要预览和线上更接近的静态构建结果，包括先将 Mermaid 图表转换为 SVG，再启动本地静态站点，可以运行：
+
+```bash
+python scripts/preview_static.py
+```
+
+默认访问：
+
+```text
+http://127.0.0.1:8001/
+```
+
+也可以指定端口：
+
+```bash
+python scripts/preview_static.py --port 8002
 ```
 
 ---
@@ -161,6 +181,7 @@ python scripts/build_local.py
 - MkDocs 导航引用是否正确；
 - 文档内部链接是否可解析；
 - 静态资源引用是否存在；
+- Mermaid 图表是否能成功预编译为 SVG；
 - MkDocs 严格构建是否通过。
 
 如果只是执行 MkDocs 构建，也可以运行：
