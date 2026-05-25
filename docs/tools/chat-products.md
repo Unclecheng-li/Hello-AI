@@ -1,6 +1,6 @@
 ---
 tags:
-  - tools
+  - Tools
 ---
 
 # Chat AI 怎么用
