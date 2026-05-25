@@ -214,11 +214,13 @@ flowchart TB
 | 行号 | 问题类型 | 风险等级 | 问题描述 | 修改建议 |
 
 代码如下：
-```python
+
+python
+
 [user_input = input("请输入文件名: ")
 with open(user_input, "r") as f:
     data = f.read()]
-```
+
 ````
 
 ## 常见误区
