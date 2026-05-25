@@ -15,7 +15,7 @@ SITE_DIR = ROOT / "site"
 
 def build_site() -> None:
     subprocess.run(
-        [sys.executable, "-m", "mkdocs", "build", "--strict"],
+        [sys.executable, str(ROOT / "scripts" / "build_cached.py")],
         cwd=ROOT,
         check=True,
     )

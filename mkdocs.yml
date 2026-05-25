@@ -50,7 +50,7 @@ plugins:
       theme: default
       renderer: mmdc
       error_on_fail: true
-      cleanup_generated_images: true
+      cleanup_generated_images: false
       mermaid_config:
         htmlLabels: false
         flowchart:

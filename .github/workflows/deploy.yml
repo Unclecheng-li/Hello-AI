@@ -43,6 +43,14 @@ jobs:
           python -m pip install -r requirements.txt
           npm install -g @mermaid-js/mermaid-cli@11.15.0
 
+      - name: Cache Mermaid SVGs
+        uses: actions/cache@v4
+        with:
+          path: docs/assets/mermaid
+          key: ${{ runner.os }}-mermaid-svg-v1-${{ hashFiles('mkdocs.yml', 'requirements.txt', 'docs/**/*.md') }}
+          restore-keys: |
+            ${{ runner.os }}-mermaid-svg-v1-
+
       - name: Show tool versions
         run: |
           python --version
@@ -61,7 +69,7 @@ jobs:
       - name: Build site
         run: |
           set -o pipefail
-          python -m mkdocs build --strict --verbose 2>&1 | tee mkdocs-build.log
+          python scripts/build_cached.py --verbose 2>&1 | tee mkdocs-build.log
 
       - name: Upload Pages artifact
         if: ${{ github.event_name != 'pull_request' }}
