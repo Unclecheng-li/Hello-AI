@@ -7,6 +7,7 @@ research/
 
 # MkDocs / build artifacts
 site/
+docs/assets/mermaid/
 dist/
 /build/
 public/
