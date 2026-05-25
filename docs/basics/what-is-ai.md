@@ -148,11 +148,8 @@ flowchart LR
     Pattern --> NLP[自然语言处理]
 
     CV --> AlexNet[2012 年 AlexNet]
-    AlexNet --> ImageNet[ImageNet 错误率<br/>26% → 15.3%]
-    ImageNet --> Industry[引爆工业界关注]
 
     ASR --> E2E[端到端神经网络]
-    E2E --> Speech[语音转文字准确率提升]
 
     NLP --> Translate[翻译]
     NLP --> QA[问答]
@@ -178,6 +175,9 @@ flowchart LR
   <strong>关键词：</strong>在海量文本上训练，擅长问答、总结、改写、抽取和生成草稿。
 </div>
 
+<div markdown="1" style="overflow-x:auto;padding:0.5rem 0 0.8rem;margin:1rem 0;">
+<div markdown="1" style="min-width:1280px;">
+
 ```mermaid
 journey
     title 用户使用 LLM 完成文本任务
@@ -198,9 +198,10 @@ journey
     section 外部增强
       接入搜索或资料库: 5: 工具
       用新信息修正回答: 5: LLM
-
 ```
 
+</div>
+</div>
 
 
 LLM 是 Large Language Model 的缩写，中文叫「大语言模型」。它是深度学习里偏语言方向的一类模型。
