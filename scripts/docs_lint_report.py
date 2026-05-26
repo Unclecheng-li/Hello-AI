@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import shutil
 import struct
@@ -720,6 +721,26 @@ def mermaid_render_config() -> dict[str, object]:
     }
 
 
+def mermaid_puppeteer_config() -> dict[str, object]:
+    args = [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+    ]
+    if os.getenv("CI") or os.getenv("GITHUB_ACTIONS"):
+        args.extend(["--single-process", "--no-zygote"])
+
+    config: dict[str, object] = {"args": args}
+    chrome_path = (
+        shutil.which("google-chrome")
+        or shutil.which("chromium-browser")
+        or shutil.which("chromium")
+    )
+    if chrome_path:
+        config["executablePath"] = chrome_path
+    return config
+
+
 def resolve_local(path: Path, target: str) -> tuple[Path | None, str]:
     target = clean_target(target)
     plain = target.split("?", 1)[0]
@@ -1006,11 +1027,26 @@ def render_mermaid_svg(body: str) -> tuple[bool, str, str | None]:
         input_path = tmpdir / "diagram.mmd"
         output_path = tmpdir / "diagram.svg"
         config_path = tmpdir / "mermaid.json"
+        puppeteer_config_path = tmpdir / "puppeteer.json"
         input_path.write_text(body + "\n", encoding="utf-8")
         config_path.write_text(json.dumps(mermaid_render_config(), ensure_ascii=False), encoding="utf-8")
+        puppeteer_config_path.write_text(
+            json.dumps(mermaid_puppeteer_config(), ensure_ascii=False),
+            encoding="utf-8",
+        )
         try:
             result = subprocess.run(
-                [mmdc, "-i", str(input_path), "-o", str(output_path), "-c", str(config_path)],
+                [
+                    mmdc,
+                    "-i",
+                    str(input_path),
+                    "-o",
+                    str(output_path),
+                    "-c",
+                    str(config_path),
+                    "-p",
+                    str(puppeteer_config_path),
+                ],
                 cwd=ROOT,
                 check=False,
                 capture_output=True,
