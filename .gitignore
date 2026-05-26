@@ -7,6 +7,7 @@ research/
 
 # MkDocs / build artifacts
 site/
+docs/assets/mermaid/
 dist/
 /build/
 public/
@@ -48,5 +49,8 @@ Thumbs.db
 
 # Logs / temp
 *.log
+docs-lint-files.txt
+docs-lint-changed-files.txt
+docs-lint-report.md
 *.tmp
 *.bak

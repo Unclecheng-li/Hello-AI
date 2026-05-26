@@ -45,6 +45,18 @@ theme:
 
 plugins:
   - search
+  - mermaid-to-svg:
+      output_dir: assets/mermaid
+      theme: default
+      renderer: mmdc
+      error_on_fail: true
+      cleanup_generated_images: false
+      mermaid_config:
+        htmlLabels: false
+        flowchart:
+          htmlLabels: false
+        class:
+          htmlLabels: false
   - material/tags:
       tags_allowed:
         - AI 基础
@@ -82,11 +94,7 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.details
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
   - toc:
