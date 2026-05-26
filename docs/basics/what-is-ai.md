@@ -421,7 +421,7 @@ ASI 是比 AGI 更远的概念：在所有领域都远超人类的智能。
 
 ??? example "💬 和一个 1966 年的聊天机器人对话"
 
-    **地址**：[psych.fullerton.edu/mbirnbaum/psych101/eliza.htm](https://psych.fullerton.edu/mbirnbaum/psych101/eliza.htm)
+    **地址**：[masswerk.at/elizabot/eliza.html](https://www.masswerk.at/elizabot/eliza.html)
     
     ELIZA 是 1966 年 MIT 的 Joseph Weizenbaum 写的程序，用模式匹配模拟心理治疗师。你说话，它回话，看起来好像能理解你——但它的代码总共不到 200 行。
     
