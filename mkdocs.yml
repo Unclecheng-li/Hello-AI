@@ -115,8 +115,10 @@ nav:
       - 机器学习: basics/machine-learning.md
       - 深度学习: basics/deep-learning.md
       - 什么是 LLM: basics/what-is-llm.md
+      - 多模态 AI：文字、图片、语音和视频: basics/multimodal-ai.md
       - 模型、数据、训练与推理: basics/model-data-training.md
       - Token、Embedding 与上下文窗口: basics/token-embedding-context.md
+      - Prompt、上下文和记忆: basics/prompt-context-memory.md
       - 温度与采样参数: basics/temperature-sampling.md
       - 为什么模型会胡说: basics/hallucination.md
   - Prompt:
