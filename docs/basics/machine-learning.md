@@ -11,7 +11,7 @@ tags:
 <div style="position:relative;z-index:1;">
 <span style="display:inline-block;padding:0.18rem 0.55rem;border-radius:999px;background:rgba(255,112,67,0.16);color:#e65100;font-size:0.78rem;font-weight:700;letter-spacing:0.02em;">AI 基础 · 第 2 站</span>
 
-机器学习（Machine Learning）就是让计算机从例子里找规律，而人不用一条一条写规则。
+<strong>机器学习（Machine Learning）</strong>就是让计算机从例子里找规律，而人不用一条一条写规则。
 
 <div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:0.75rem;margin-top:1rem;">
 <div style="padding:0.8rem;border-radius:0.75rem;background:var(--md-default-bg-color);border:1px solid var(--md-default-fg-color--lightest);">

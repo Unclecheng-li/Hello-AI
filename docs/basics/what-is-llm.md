@@ -5,172 +5,434 @@ tags:
 
 # 什么是 LLM
 
-LLM 的全称是 Large Language Model，中文叫「大语言模型」。
+<div markdown="1" style="position:relative;border:1px solid rgba(126,87,194,0.26);border-radius:1rem;padding:1.1rem 1.2rem;margin:0.8rem 0 1.5rem;background:linear-gradient(180deg,rgba(28,27,43,0.06),rgba(126,87,194,0.08));overflow:hidden;">
+<div style="position:absolute;right:1rem;top:1rem;width:0.55rem;height:0.55rem;border-radius:50%;background:#7e57c2;box-shadow:-1rem 0 #26c6da,-2rem 0 #ffb74d;"></div>
+<div markdown="1" style="font-family:var(--md-code-font-family);font-size:0.92rem;line-height:1.8;padding:0.75rem 0.85rem;border-radius:0.75rem;background:var(--md-code-bg-color);border:1px solid var(--md-default-fg-color--lightest);margin-bottom:0.9rem;">
+<span style="color:#7e57c2;font-weight:700;">user</span>  帮我把这段话改得像人话一点  
+<span style="color:#26a69a;font-weight:700;">model</span>  可以，我先保留原意，再把句子拆短一点……
+</div>
 
-你可以把它想象成一个**读了互联网上几乎所有公开文本的超级学生**——它读过维基百科、书籍、论文、网页、代码，甚至论坛里的闲聊。通过阅读这些海量文本，它学会了语言的规律：词怎么搭配、句子怎么组织、不同场景下该用什么语气说话。
+LLM，全称 **Large Language Model**，中文叫「大语言模型」。
 
-你熟悉的 ChatGPT、Claude、DeepSeek、通义千问，本质上都是在 LLM 外面包了一层产品壳。LLM 是引擎，对话界面是方向盘和座椅。
+先别急着把它想成一个懂你的大脑。更贴近它工作方式的说法是，它像一台巨大的语言续写机器。你给它一段文字，它根据上下文判断后面最可能接什么，然后一个 token 一个 token 地写下去。
 
-## 为什么需要 LLM
+神奇的地方在于，当这台续写机器读过足够多文本、代码、网页、论文和对话之后，续写这件小事，会长出很多看起来很像理解、总结、翻译、写代码和推理的能力。
+</div>
 
-在 LLM 出现之前，计算机处理语言的方式很「笨」。
+## 先盯住那个「发送」按钮
 
-比如你想让机器翻译一句话，工程师得写一堆规则：如果看到「苹果」前面是「吃」，就翻译成 fruit；如果前面是「公司」，就翻译成 Apple。规则越写越多，稍微遇到点新说法就崩盘。
+你在聊天框里输入一句话。
 
-后来有了机器学习，机器能从数据里学规律，不用人一条一条写规则了。但早期模型能「记住」的上下文很短，你说完三句话它就忘了第一句，生成的文本也经常前言不搭后语。
+> 帮我解释一下 Transformer，别太学术，适合初中生听。
 
-LLM 解决的核心问题就是：**让机器真正「读懂」和「说人话」**——不仅能处理很长的上下文，还能生成连贯、有逻辑、甚至带有一定推理能力的文本。
+你点下发送。
 
-## LLM 到底是什么
+屏幕停了一小会儿，答案开始往外冒。一个字，一小段，再一整段。它会解释、会换语气、会补例子。你继续追问，它还能接着前面的上下文聊下去。
 
-拆开来看，LLM 就是三个关键词：大、语言、模型。
+这章就从这个瞬间往里拆。
 
-**大（Large）**
+先放下历史和术语。我们直接跟着一条消息往模型里面走一圈，看它到底经历了什么。
 
-这里的「大」主要指两方面：**参数规模**和**训练数据量**。
+<div markdown="1" style="display:grid;grid-template-columns:1.1fr 1.6fr;gap:0.9rem;margin:1.1rem 0 1.5rem;align-items:stretch;">
+<div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid rgba(126,87,194,0.28);background:rgba(126,87,194,0.08);">
+<strong>你看到的</strong>
 
-参数（Parameter）是模型内部的调节旋钮，可以理解为这个「超级学生」在读书时记下的各种规律和关联。参数越多，模型能捕捉的语言细节就越丰富。
+- 输入一句自然语言
+- 等几秒
+- 拿到一段像人写的回答
+</div>
+<div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid rgba(38,166,154,0.28);background:rgba(38,166,154,0.07);">
+<strong>模型里面发生的</strong>
 
-目前已公开确认的一些数字可以帮你建立直观感受：
+- 文字被切成 token
+- token 被转成向量
+- Transformer 计算上下文关系
+- 模型预测下一个 token
+- 新 token 放回上下文，继续预测
+</div>
+</div>
 
-| 模型 | 公开确认的参数量 | 训练数据量 |
+一句话解释，LLM 是一种用海量文本训练出来的模型。它最核心的动作只有一个，根据上下文预测后面该怎么接。
+
+这个区别很重要。后面讲幻觉、搜索、RAG、提示词，全都绕不开它。
+
+## 资料库的错觉，续写器的真相
+
+很多人第一次用 LLM，会本能地把它当成搜索引擎。
+
+这很正常。你问它问题，它给你答案。体验上确实像搜索。
+
+但底层完全两回事。
+
+搜索引擎做的是检索。网页、文章、新闻、论文先存在那里，搜索引擎把相关页面找出来，再排个序给你看。
+
+LLM 做的是生成。它根据输入和上下文，计算下一个 token 的概率，再继续往后写。它拿出来的答案，经常来自现场组织，很少像传统搜索那样从固定答案库里复制一段。
+
+<div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:0.85rem;margin:1rem 0 1.4rem;">
+<div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid rgba(66,165,245,0.30);background:linear-gradient(135deg,rgba(66,165,245,0.11),rgba(66,165,245,0.02));">
+<strong>搜索引擎像图书管理员</strong>
+
+你问它，哪本书里有这句话？
+
+它去书架上找，然后把书名、页码和链接递给你。
+</div>
+<div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid rgba(126,87,194,0.30);background:linear-gradient(135deg,rgba(126,87,194,0.12),rgba(126,87,194,0.02));">
+<strong>LLM 像文本续写器</strong>
+
+你给它一个开头。
+
+它根据读过的语言模式、当前上下文和你的要求，把后面的文字写出来。
+</div>
+</div>
+
+所以 LLM 可以写得很顺。
+
+但顺，和真，隔着一层核查。
+
+它最危险的地方也在这里。它可能把一个错误答案写得非常完整，格式正确、语气自信、逻辑看着也顺。如果你不查来源，很容易被它带走。
+
+## 一句话在模型身体里走一圈
+
+下面这张图展示的是一条消息的「内部旅行」，重点看顺序和角色，别把它当历史时间线。
+
+<div markdown="1" style="padding:0.85rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-code-bg-color);margin:1rem 0;">
+
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant T as 分词器 Tokenizer
+    participant E as 向量空间 Embedding
+    participant A as 注意力层 Attention
+    participant H as 输出头 Head
+    U->>T: 输入「苹果今天发布了新款……」
+    T->>E: 切成 token
+    E->>A: 转成可计算的向量
+    A->>A: 判断「苹果」更像公司还是水果
+    A->>H: 给出下一个 token 的概率分布
+    H-->>U: 生成「手机」或「芯片」等候选
+```
+
+</div>
+
+拆成四个动作就够了。
+
+<div markdown="1" style="margin:1rem 0 1.5rem;border-left:3px solid #7e57c2;padding-left:1rem;">
+
+**第一步，切开。**  
+模型处理文本时，会先把整句话切成 token。中文里 token 可能是一个字，也可能是一个词；英文里可能是一个单词，也可能是单词片段。
+
+**第二步，变成数字。**  
+模型真正处理的是向量。你可以把向量理解成一个词在高维空间里的坐标，坐标里藏着语义、语气、上下文倾向。
+
+**第三步，看关系。**  
+Transformer 里的注意力机制会判断哪些 token 彼此相关。比如「苹果今天发布了新款」里的「苹果」，大概率指 Apple 公司；「这个苹果很甜」里的「苹果」，大概率是水果。
+
+**第四步，继续写。**  
+模型预测下一个 token。生成之后，它又把这个 token 放回上下文，再预测下一个。回答就是这么一点点长出来的。
+
+</div>
+
+这也是为什么同一个问题问两遍，答案可能不完全一样。模型每一步都在概率空间里选择后续文字，只要采样策略不同，后面就会分叉。
+
+## 三个零件，先记住这三个
+
+LLM 术语很多，新手最容易被名词淹没。
+
+先抓三个就够。
+
+<div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(12.5rem,1fr));gap:0.85rem;margin:1rem 0 1.4rem;">
+<div markdown="1" style="padding:1rem;border-radius:0.9rem;border-top:4px solid #7e57c2;background:var(--md-default-bg-color);box-shadow:0 0.3rem 1rem rgba(0,0,0,0.06);">
+<strong>Token</strong>
+
+文本的切片单位。模型处理文字时，会沿着 token 一步步往前走。
+
+例子，人工智能可能被切成「人工」和「智能」。
+</div>
+<div markdown="1" style="padding:1rem;border-radius:0.9rem;border-top:4px solid #26a69a;background:var(--md-default-bg-color);box-shadow:0 0.3rem 1rem rgba(0,0,0,0.06);">
+<strong>参数</strong>
+
+模型内部可调整的数字。训练就是反复调整这些数字，让模型越来越会预测。
+
+参数更像一大片被训练出来的语言肌肉，别把它想成一条条知识卡片。
+</div>
+<div markdown="1" style="padding:1rem;border-radius:0.9rem;border-top:4px solid #ff9800;background:var(--md-default-bg-color);box-shadow:0 0.3rem 1rem rgba(0,0,0,0.06);">
+<strong>上下文窗口</strong>
+
+模型一次能看到多少信息。窗口越大，它能同时参考的前文、文件、代码越多。
+
+窗口变大，信息容量会变宽；抓错重点、漏看细节的情况仍然会发生。
+</div>
+</div>
+
+这三个零件拼起来，你就能理解大多数 LLM 现象。
+
+模型为什么会忘前文？上下文窗口不够，或者注意力没抓住。  
+模型为什么会编来源？因为它在生成像来源的文本，核验来源这件事还得额外做。  
+模型为什么提示词一改，答案就变？因为上下文变了，概率分布也跟着变了。
+
+## 为什么它突然爆发
+
+LLM 当然没在 2022 年突然从天上掉下来。
+
+它更像几条线终于撞到了一起。
+
+<div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:0.8rem;margin:1rem 0 1.4rem;">
+<div markdown="1" style="padding:0.9rem;border-radius:0.85rem;background:rgba(126,87,194,0.09);border:1px solid rgba(126,87,194,0.28);">
+<strong>2017</strong><br>
+Transformer 出现，注意力机制让大规模并行训练更顺。
+</div>
+<div markdown="1" style="padding:0.9rem;border-radius:0.85rem;background:rgba(33,150,243,0.08);border:1px solid rgba(33,150,243,0.25);">
+<strong>2018-2020</strong><br>
+GPT 路线证明，先预训练再适配任务，可以把一个模型用到很多场景。
+</div>
+<div markdown="1" style="padding:0.9rem;border-radius:0.85rem;background:rgba(38,166,154,0.08);border:1px solid rgba(38,166,154,0.25);">
+<strong>2022</strong><br>
+InstructGPT 和 ChatGPT 让模型更会听人话，对话界面把门槛降了下来。
+</div>
+<div markdown="1" style="padding:0.9rem;border-radius:0.85rem;background:rgba(255,152,0,0.09);border:1px solid rgba(255,152,0,0.28);">
+<strong>2023 之后</strong><br>
+GPT-4、Claude、Gemini、LLaMA、Qwen、DeepSeek 等模型把生态推开。
+</div>
+</div>
+
+只看一个节点，很容易误判。
+
+Transformer 解决了「训得动」的问题。互联网和代码仓库提供了海量训练材料。GPU 集群把规模推上去。指令微调和人类反馈让模型更像助手。ChatGPT 又把它包装成普通人能用的聊天框。
+
+技术爆发经常来自一堆干柴碰到火星。
+
+LLM 也是这样。
+
+## 它为什么看起来会思考
+
+严格讲，LLM 的训练目标很朴素，预测下一个 token。
+
+但朴素这个词，千万别理解成简单。
+
+为了预测一句话后面该接什么，模型被迫学习很多东西。它要学语法，学事实，学代码结构，学论文格式，学问答套路，学一个解释应该怎么展开，也学人类在网上吵架、道歉、求助、写教程时的语言痕迹。
+
+当规模足够大时，一些能力会冒出来。
+
+它会总结，因为总结本身也是一种文本模式。  
+它会翻译，因为不同语言之间有对应关系。  
+它会写代码，因为代码也是高度结构化的语言。  
+它能做一部分推理，因为训练材料里有大量解题步骤、证明、代码调试和人类解释过程。
+
+但这里要冷静一点。
+
+看起来会思考，和人类那种思考还有距离。
+
+它没有主观体验，不会真的理解「疼」是什么，也不会真的对一个观点产生信念。它能模拟一段有情绪的文字，但模拟和拥有之间隔着很远。把它当工具，比把它当人安全得多。
+
+## LLM 适合做什么
+
+LLM 最适合处理那些能用语言描述、也能用语言交付的任务。
+
+<div markdown="1" style="overflow-x:auto;border:1px solid var(--md-default-fg-color--lightest);border-radius:0.85rem;margin:1rem 0;background:var(--md-default-bg-color);">
+
+| 工作位 | 适合交给 LLM 的任务 | 你需要盯住什么 |
 | --- | --- | --- |
-| GPT-3（OpenAI，2020） | 1,750 亿 | 约 3,000 亿词元（token） |
-| LLaMA 3 70B（Meta，2024） | 700 亿 | 15 万亿词元 |
-| DeepSeek-V3（2024） | 总参数 6,710 亿，每次激活 370 亿 | 14.8 万亿词元 |
+| 草稿机 | 邮件、脚本、标题、提纲、汇报初稿 | 语气是否符合你本人，事实是否准确 |
+| 解释器 | 解释报错、论文、概念、代码片段 | 是否把关键条件漏掉 |
+| 代码搭子 | 写函数、补测试、改 bug、读项目结构 | 必须运行和审查，别只看它说得对不对 |
+| 长文助手 | 总结会议、提取文档要点、整理资料 | 原文是否真的支撑它的结论 |
+| 头脑风暴器 | 给角度、列方案、拆步骤、找反例 | 别把候选方案直接当最终判断 |
 
-GPT-4 的具体参数 OpenAI 没有公开，但业界普遍推测它采用了混合专家架构（Mixture of Experts，MoE），总参数量级在万亿以上。
+</div>
 
-这些数字到底是什么概念？如果把参数比作大脑里的神经突触，LLM 的「突触」数量是人类大脑的数十倍甚至上百倍。不过别紧张，这并不意味着 LLM 比人聪明——它只是专门用来处理语言的模式匹配机器。
+有一类任务要特别谨慎。
 
-**语言（Language）**
+法律、医疗、金融、安全、学术引用、新闻事实、实时行情，这些都属于高风险区域。LLM 可以帮你整理问题、生成检查清单、解释背景，但事实来源要回到原始材料。
 
-LLM 的主战场是人类自然语言。它能理解中文、英文、日文，也能写代码、做数学推导、生成表格。虽然名字叫「语言」模型，但它的能力已经延伸到了很多结构化文本任务。
+它可以当副驾驶。
 
-**模型（Model）**
+方向盘还在你手上。
 
-模型（Model）本质上是一个超级复杂的数学函数：输入一段文字，输出一段文字。它不会「思考」，而是通过统计规律预测「下一个词最可能是什么」，然后一个词一个词地生成整段回答。
+## 幻觉这个毛病，挺贵
 
-## LLM 的核心能力
+幻觉听起来像一个很轻的词，好像只是偶尔胡说。
 
-LLM 不是只会聊天的鹦鹉，它确实有几项扎实的本领：
+但在真实场景里，它可能很贵。
 
-**理解上下文**
+2023 年，美国纽约南区联邦法院处理过一个经典案例，**Mata v. Avianca**。律师在诉讼文件里使用了 ChatGPT 生成的法律案例引用，结果其中多个案例并不存在。文件交上去之后，对方律师查不到，法官也要求解释，最后相关律师因为提交虚假引用被制裁。
 
-你可以扔给它一篇 5,000 字的文章，让它总结核心观点；也可以跟它进行十几轮对话，它还能记得你最早提过的要求。这个「能记住多长」的能力叫上下文窗口（Context Window），就像它的短期记忆容量。早期的 GPT-3 大约能记 4,000 个词元，现在主流模型已经能处理 128,000 甚至更多的词元。
+这个案例很适合放在 LLM 入门里。
 
-**生成连贯文本**
+因为这里的问题已经越过闲聊写错一句话，直接变成把虚构材料写进正式法律文件。更麻烦的是，它写得很像真的。案名、格式、语气、法律文本的腔调，全都有。
 
-让它写一封辞职信、一段产品文案、一个睡前故事，它能根据你的要求调整语气、结构和细节。这个能力的本质是：它读过太多类似文本，知道「在这种情况下，通常接下来会说什么」。
+<div markdown="1" style="padding:1rem 1.05rem;border-radius:0.9rem;border:1px solid rgba(244,67,54,0.28);background:linear-gradient(135deg,rgba(244,67,54,0.10),rgba(255,255,255,0));margin:1rem 0 1.4rem;">
+<strong>这里的教训也很直接，别让 LLM 独自负责事实。</strong>
 
-**推理和翻译**
+LLM 负责生成，人负责核查。尤其是引用、数据、法规、论文、漏洞编号、公司财报、实时行情这种内容，必须回到原始来源。
+</div>
 
-LLM 能做一些基础推理，比如「如果 A 大于 B，B 大于 C，那么 A 和 C 谁大」。也能在多种语言之间翻译，而且质量往往不错——因为它在训练时见过大量平行语料。
+如果你只记一条防幻觉规则，就记这个。
 
-**总结和抽取**
+凡是会影响真实决策的内容，都要查源头。
 
-从长文档里提取关键信息、把会议记录整理成待办事项、从合同里找出责任条款，这些任务 LLM 都比较擅长。
+## 搜索、RAG 和 LLM 怎么配合
 
-## LLM 是怎么工作的
+现在很多产品会先检索资料，再把资料塞进上下文，让 LLM 根据资料组织回答。
 
-一张图就能说明白 LLM 的基本流程：
+这叫 RAG，Retrieval-Augmented Generation，检索增强生成。
+
+它的思路很直接。
+
+<div markdown="1" style="padding:0.85rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-code-bg-color);margin:1rem 0;">
 
 ```mermaid
 flowchart LR
-    A[用户输入] --> B[分词<br>Tokenization]
-    B --> C[模型计算]
-    C --> D[生成下一个词]
-    D --> E{是否结束?}
-    E -->|否| C
-    E -->|是| F[输出回答]
+    Q[问题] --> R[检索资料]
+    R --> S[筛选和切片]
+    S --> C[塞进上下文]
+    C --> G[LLM 组织回答]
+    G --> V[人检查来源]
 ```
 
-简单来说：
+</div>
 
-1. 你输入一段文字，模型先把它切成一个个词元（Token）。词元可以是字、词，或者词的一部分。比如「人工智能」可能被切成「人工」「智能」两个 Token。
-2. 模型根据这些 Token 计算出一个概率分布：下一个词最可能是什么。
-3. 它选出一个词，把这个词加入上下文，再计算下一个词。
-4. 循环往复，直到生成完整的回答。
+RAG 能显著降低幻觉，但它也没有免死金牌。
 
-所以 LLM 的核心动作其实是**预测下一个词**。它不会「理解」你的问题，只是根据海量文本中学到的模式，输出「在这种情况下最可能出现的回答」。
+检索可能搜错。资料可能过期。模型可能读漏。引用也可能对不上原文。所以你看到带链接的 AI 答案，也别自动放心。链接只是检查入口，正确性还得靠你一路追到原文。
 
-## LLM 不是搜索引擎
+这个判断在安全、金融和学术场景里尤其重要。
 
-这是新手最容易踩的坑。
+## 怎么问，答案会更稳
 
-搜索引擎的工作方式是：**检索已有信息**。你在百度或 Google 输入问题，它去网页库里找最相关的页面，然后展示给你。这些页面在搜之前就已经存在了。
+提示词少一点玄学味会更好。
 
-LLM 的工作方式是：**生成新文本**。它根据你输入的问题，一个词一个词地「编」出回答。这个回答可能混合了它读过的很多内容，也可能包含它自己「合理推测」出来的东西——这些东西可能是错的。
+新手先做到三件事，效果就会明显好很多。
 
-这个「自信地胡说」的现象叫**幻觉（Hallucination）**。比如你可能问它某篇论文的作者，它会给出一个听起来很合理的名字，甚至编出一篇根本不存在的论文。
+<div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:0.85rem;margin:1rem 0 1.4rem;">
+<div markdown="1" style="padding:1rem;border-radius:0.9rem;background:rgba(76,175,80,0.08);border:1px solid rgba(76,175,80,0.25);">
+<strong>给背景</strong>
 
-所以，**不要把 LLM 当成能查证事实的工具**。它擅长的是组织语言、提供思路、帮你起草内容，但涉及事实核查，你还得自己验证。
+别只说「帮我写」。告诉它读者是谁、用途是什么、限制是什么。
+</div>
+<div markdown="1" style="padding:1rem;border-radius:0.9rem;background:rgba(33,150,243,0.08);border:1px solid rgba(33,150,243,0.25);">
+<strong>给样例</strong>
 
-## LLM 的能力边界
+你想要什么风格，最好贴一小段参考。模型很吃上下文里的示范。
+</div>
+<div markdown="1" style="padding:1rem;border-radius:0.9rem;background:rgba(255,152,0,0.09);border:1px solid rgba(255,152,0,0.28);">
+<strong>给验收标准</strong>
 
-知道了 LLM 能做什么，更要清楚它不能做什么。
+告诉它避开什么。比如别编来源、别用套话、别超过 300 字。
+</div>
+</div>
 
-**不保证正确**
+一个弱提示词长这样。
 
-LLM 追求的是「看起来像正确的回答」，而不是「经过验证的事实」。它在训练时学的是「人们通常怎么回答这类问题」，而不是「这个问题的正确答案是什么」。
+> 解释一下 LLM。
 
-**知识有截止日期**
+一个更稳的提示词可以这样写。
 
-LLM 的知识截止到训练数据的时间点。比如 GPT-4 的知识截止到 2023 年，2024 年发生的大事它不知道——除非你给它额外提供信息，或者产品层接入了实时搜索。
+> 我在写一篇面向 AI 新手的入门文章。请用 300 字解释 LLM，要求口语化，避开「赋能」「重塑」这类空话。必须讲清 token、上下文和幻觉风险。如果涉及事实，不确定的地方请标注出来。
 
-**长链条逻辑不稳定**
-
-让它做一道简单的算术题，它可能对；但让它算十步以上的复杂财务模型，错误率会显著上升。让它写一段 200 行的代码可能没问题，但让它维护一个上万行的项目，它很容易前后矛盾。
-
-**没有真正的理解**
-
-LLM 能模拟对话，但背后没有意识、没有情感、没有主观体验。它不会「想要」帮你，也不会「觉得」某个答案更好。它只是在执行概率预测。
+你会发现，后者靠的当然没什么神秘咒语，关键就是把任务边界讲清楚。
 
 ## 常见误区
 
-**误区 1：LLM 有思想**
+<div markdown="1" style="margin:1rem 0 1.4rem;">
 
-不，它没有。它不会思考、不会感受、不会有自我意识。它能模拟出「我很开心」这样的句子，但背后没有任何情绪。把它当成一个高级自动补全工具，比把它当成一个人，要准确得多。
+??? warning "误区 1，LLM 等于搜索引擎"
 
-**误区 2：LLM 知道一切**
+    这个理解会带偏。搜索引擎检索已有网页，LLM 生成新文本。带联网检索的产品会把两者结合，但生成部分仍然可能出错。
 
-它的知识受限于训练数据。训练数据里没有的内容、训练截止日期之后发生的事件、专业领域的小众知识，它都可能不知道或者猜错。
+??? warning "误区 2，模型越大一定越适合我"
 
-**误区 3：LLM 的输出就是事实**
+    这要看任务。大模型综合能力强，但成本、速度、上下文、工具生态、隐私部署都要算进去。写短文案、做固定分类、小规模私有任务时，小模型或专用模型可能更合适。
 
-千万不要直接复制 LLM 生成的内容当作权威引用。尤其是涉及数据、人名、日期、论文引用时，务必二次核实。
+??? warning "误区 3，回答越流畅越可信"
 
-**误区 4：LLM 越大一定越好**
+    恰恰相反，越流畅的错误越危险。法律引用、论文标题、漏洞编号、财务数据、实时信息，都要回到原始来源查。
 
-参数量只是影响表现的因素之一。训练数据的质量、训练方法的设计、后续微调（Fine-tuning）的水平，都会影响最终效果。一个 70B 参数但训练精良的模型，在很多任务上可能比一个胡乱训练的千亿模型更实用。
+??? warning "误区 4，它真的懂我"
 
-## 最小示例：感受不同 LLM 的风格
+    它能根据上下文模拟理解你的表达，但没有人的主观体验。把它当成高性能语言工具，比把它当成有意识的伙伴更稳。
 
-把同一个问题丢给不同的 LLM，你会发现它们的回答风格和侧重点明显不同。
+</div>
 
-**提示词**：用一句话解释什么是光合作用，要求一个 8 岁孩子能听懂。
+## 动手试试
 
-**ChatGPT（GPT-4o）** 的回答风格：
+光看概念不够。下面几个小实验，能让你直接摸到 LLM 的边界。
 
-> 光合作用就是植物用阳光当「食物制造机」，把空气和水变成自己能吃的糖，同时放出氧气让我们呼吸。
+<div markdown="1" style="border:1px solid var(--md-default-fg-color--lightest);border-radius:0.9rem;padding:0.2rem 1rem 0.5rem;margin:1rem 0;background:linear-gradient(135deg,rgba(126,87,194,0.07),rgba(255,255,255,0));">
 
-**DeepSeek** 的回答风格：
+??? example "实验 1，同一句话改三种风格"
 
-> 植物像一个小工厂，叶子是车间，阳光是电力，把水和空气加工成糖分当粮食，顺便排出氧气。
+    找一段你自己写过的文字，让 LLM 分别改成「小红书风」「技术博客风」「口播风」。
+    
+    看看哪些信息被保留了，哪些信息被它自动改掉了。这个实验能帮你理解，LLM 很会迁移语气，但也可能悄悄改变事实。
 
-**Claude** 的回答风格：
+??? example "实验 2，让它承认不确定"
 
-> 想象植物有一个神奇的厨房，阳光是炉灶，叶子是厨师。植物用这个厨房把水和空气煮成自己的零食，还顺便给我们制造了呼吸需要的氧气。
+    问一个偏冷门的问题，并在提示词里加一句，「不确定的地方请直接说不知道，别编」。
+    
+    对比加这句话前后的回答。你会发现，提示词能降低胡编概率，但没法彻底消除幻觉。
 
-三个回答都对，但比喻方式不同：GPT-4o 偏「食物制造机」这种功能型比喻，DeepSeek 偏「工厂车间」这种结构化比喻，Claude 偏「神奇厨房」这种故事型比喻。没有哪个绝对更好，但你会发现不同模型有不同的「说话习惯」。
+??? example "实验 3，测试上下文窗口"
+
+    给它一篇长文章，先只贴开头 500 字让它总结，再贴全文让它总结。
+    
+    对比两个版本。它没看到的信息，引用起来就很飘；看到全文以后，也可能抓偏重点。
+
+??? example "实验 4，查一次来源"
+
+    让任意 LLM 列出 3 篇 Transformer 相关论文，并给出作者、年份和链接。
+    
+    然后逐个打开链接检查。重点放在来源能否回到真实页面，别被漂亮格式晃过去。
+
+</div>
+
+## 学完这一章，带走四句话
+
+<div class="grid cards" markdown>
+
+-   **LLM 是语言续写机器**
+
+    它根据上下文预测下一个 token。很多复杂能力，都是从这个动作里长出来的。
+
+-   **上下文决定它看见什么**
+
+    你给它的信息、示例、限制和资料，会直接改变它的输出方向。
+
+-   **流畅需要核查**
+
+    文字越顺，越容易让人放松警惕；幻觉是生成式模型长期要面对的风险。
+
+-   **高风险内容必须查源头**
+
+    法律、医疗、金融、安全、论文引用、实时数据，都别只看 LLM 的回答。
+
+</div>
 
 ## 延伸阅读
 
-- [Token、Embedding 与上下文](token-embedding-context.md) —— 深入了解 LLM 如何处理文字
-- [Prompt 工程入门](../prompt/index.md) —— 学会怎么向 LLM 提问，才能得到更好的回答
+<div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:0.85rem;margin:1rem 0;">
+<a href="deep-learning.md" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<strong>什么是深度学习</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">先理解多层神经网络，再看 LLM 会更顺。</span>
+</a>
+<a href="token-embedding-context.md" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<strong>Token、Embedding 与上下文</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">继续拆开 LLM 如何处理文字。</span>
+</a>
+<a href="https://arxiv.org/abs/1706.03762" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<strong>Attention Is All You Need</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">Transformer 原始论文，现代 LLM 的关键起点。</span>
+</a>
+<a href="https://openai.com/index/chatgpt/" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<strong>OpenAI：Introducing ChatGPT</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">ChatGPT 官方发布文章，适合了解对话式体验的起点。</span>
+</a>
+</div>
 
-## 练习题
+## 下一步
 
-1. 选同一个开放性问题（比如「如何养成早睡的习惯」），分别问 ChatGPT、DeepSeek、Claude 或通义千问，记录三个模型的回答。对比它们的结构、语气、具体建议的差异。
-2. 问一个需要事实核查的问题（比如「2024 年诺贝尔文学奖得主是谁」），观察 LLM 是答对了、答错了，还是告诉你它不知道。如果答错了，它是怎么「编」的？
-3. 把一篇你熟悉领域的文章扔给 LLM 让它总结，检查总结里有没有遗漏关键信息或加入原文没有的内容。
+<div markdown="1" style="border:1px solid var(--md-default-fg-color--lightest);border-left:4px solid #7e57c2;border-radius:0.85rem;padding:1rem 1.1rem;margin:0.9rem 0;background:linear-gradient(135deg,var(--md-code-bg-color),rgba(126,87,194,0.06));">
+
+如果你已经理解「LLM 是怎么生成文字的」，下一站建议看：
+
+<a href="token-embedding-context.md" style="display:block;margin-top:0.75rem;padding:0.85rem 1rem;border-radius:0.65rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+  <strong>Token、Embedding 与上下文 →</strong><br>
+  <span style="color:var(--md-default-fg-color--light);font-size:0.92rem;">继续拆开文字进入模型后的三个底层零件。</span>
+</a>
+
+</div>
