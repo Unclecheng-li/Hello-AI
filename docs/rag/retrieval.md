@@ -187,7 +187,7 @@ for text, score in results:
 - [向量化](vectorization.md) —— 检索的数据基础
 - [重排](rerank.md) —— 检索结果的二次排序
 - [生成](generation.md) —— 检索结果如何输入 LLM
-- [BM25 算法详解](https://zh.wikipedia.org/wiki/BM25)
+- [BM25 算法详解](https://en.wikipedia.org/wiki/Okapi_BM25)
 
 ## 练习题
 
