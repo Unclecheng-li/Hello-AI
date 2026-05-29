@@ -524,7 +524,7 @@ flowchart LR
 
 理解了模型、数据、训练和推理之后，下一站建议看：
 
-<a href="token-embedding-context.md" style="display:block;margin-top:0.75rem;padding:0.85rem 1rem;border-radius:0.65rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<a href="../token-embedding-context/" style="display:block;margin-top:0.75rem;padding:0.85rem 1rem;border-radius:0.65rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
   <strong>Token、Embedding 与上下文窗口 →</strong><br>
   <span style="color:var(--md-default-fg-color--light);font-size:0.92rem;">继续拆开模型输入输出的基本单位，理解 token、向量和上下文窗口为什么影响价格、速度和效果。</span>
 </a>

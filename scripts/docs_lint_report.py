@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import posixpath
 import re
 import shutil
 import struct
@@ -10,7 +11,7 @@ import subprocess
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
-from urllib.parse import unquote
+from urllib.parse import unquote, urljoin
 
 import yaml
 
@@ -741,6 +742,27 @@ def mermaid_puppeteer_config() -> dict[str, object]:
     return config
 
 
+def source_to_route(path: Path) -> str:
+    rel = path.relative_to(DOCS).as_posix()
+    if path.name == "index.md":
+        parent = path.parent.relative_to(DOCS).as_posix()
+        if parent == ".":
+            return "/"
+        return f"/{parent.strip('/')}/"
+    return f"/{Path(rel).with_suffix('').as_posix().strip('/')}/"
+
+
+def route_to_source(route: str) -> Path:
+    clean = posixpath.normpath("/" + route.strip("/"))
+    if clean == "/":
+        return DOCS / "index.md"
+    parts = clean.strip("/").split("/")
+    directory_index = DOCS.joinpath(*parts, "index.md")
+    if directory_index.exists():
+        return directory_index
+    return DOCS.joinpath(*parts).with_suffix(".md")
+
+
 def resolve_local(path: Path, target: str) -> tuple[Path | None, str]:
     target = clean_target(target)
     plain = target.split("?", 1)[0]
@@ -748,7 +770,12 @@ def resolve_local(path: Path, target: str) -> tuple[Path | None, str]:
     file_part = unquote(file_part)
     if not file_part:
         return path, anchor
-    candidate = (DOCS / file_part.lstrip("/")) if file_part.startswith("/") else (path.parent / file_part)
+    if file_part.endswith("/") or (file_part.startswith("/") and not Path(file_part).suffix):
+        base_route = source_to_route(path)
+        route = file_part if file_part.startswith("/") else urljoin(base_route, file_part)
+        candidate = route_to_source(route)
+    else:
+        candidate = (DOCS / file_part.lstrip("/")) if file_part.startswith("/") else (path.parent / file_part)
     resolved = candidate.resolve(strict=False)
     try:
         if not resolved.is_relative_to(ROOT):
@@ -780,6 +807,17 @@ def lint_links(path: Path, text: str) -> list[Finding]:
             )
             continue
         if is_external(target):
+            continue
+        if path.is_relative_to(DOCS / "basics") and target.split("#", 1)[0].split("?", 1)[0].endswith(".md"):
+            findings.append(
+                Finding(
+                    "markdown/local-link-markdown-page-url",
+                    path,
+                    line_no,
+                    f"basics 页面链接应使用目录式 URL：{target}。",
+                    "将页面链接改成 machine-learning/ 或 ../machine-learning/ 这类格式，避免构建后跳到 .md 地址。",
+                )
+            )
             continue
         resolved, anchor = resolve_local(path, target)
         if resolved is None:
