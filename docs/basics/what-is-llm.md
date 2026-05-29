@@ -410,10 +410,10 @@ RAG 能显著降低幻觉，但它也没有免死金牌。
 ## 延伸阅读
 
 <div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:0.85rem;margin:1rem 0;">
-<a href="deep-learning.md" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<a href="../deep-learning/" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
 <strong>什么是深度学习</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">先理解多层神经网络，再看 LLM 会更顺。</span>
 </a>
-<a href="token-embedding-context.md" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<a href="../token-embedding-context/" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
 <strong>Token、Embedding 与上下文</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">继续拆开 LLM 如何处理文字。</span>
 </a>
 <a href="https://arxiv.org/abs/1706.03762" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
@@ -430,7 +430,7 @@ RAG 能显著降低幻觉，但它也没有免死金牌。
 
 如果你已经理解「LLM 是怎么生成文字的」，下一站建议看：
 
-<a href="token-embedding-context.md" style="display:block;margin-top:0.75rem;padding:0.85rem 1rem;border-radius:0.65rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<a href="../token-embedding-context/" style="display:block;margin-top:0.75rem;padding:0.85rem 1rem;border-radius:0.65rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
   <strong>Token、Embedding 与上下文 →</strong><br>
   <span style="color:var(--md-default-fg-color--light);font-size:0.92rem;">继续拆开文字进入模型后的三个底层零件。</span>
 </a>

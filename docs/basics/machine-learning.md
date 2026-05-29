@@ -513,10 +513,10 @@ flowchart LR
 ## 延伸阅读
 
 <div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:0.85rem;margin:1rem 0;">
-<a href="what-is-ai.md" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<a href="../what-is-ai/" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
 <strong>什么是 AI</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">从更大的视角理解 AI、机器学习、深度学习的关系。</span>
 </a>
-<a href="deep-learning.md" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<a href="../deep-learning/" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
 <strong>什么是深度学习</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">了解机器学习中最热门的一条技术路线。</span>
 </a>
 <a href="https://developers.google.com/machine-learning/crash-course/" style="display:block;padding:0.95rem 1rem;border-radius:0.8rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
@@ -533,7 +533,7 @@ flowchart LR
 
 分清了机器学习的概念之后，下一站建议看：
 
-<a href="deep-learning.md" style="display:block;margin-top:0.75rem;padding:0.85rem 1rem;border-radius:0.65rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<a href="../deep-learning/" style="display:block;margin-top:0.75rem;padding:0.85rem 1rem;border-radius:0.65rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
   <strong>深度学习 →</strong><br>
   <span style="color:var(--md-default-fg-color--light);font-size:0.92rem;">了解机器学习中最热门的一条技术路线——用多层神经网络处理复杂任务。</span>
 </a>
