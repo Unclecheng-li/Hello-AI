@@ -5,11 +5,11 @@ tags:
 
 # Prompt、上下文和记忆
 
-<div markdown="1" style="position:relative;overflow:hidden;border:1px solid rgba(255,112,67,0.28);border-radius:1rem;padding:1.25rem 1.35rem;margin:0.8rem 0 1.5rem;background:linear-gradient(135deg,rgba(255,112,67,0.14),rgba(63,81,181,0.08) 46%,rgba(0,188,212,0.10));box-shadow:0 0.65rem 1.8rem rgba(0,0,0,0.10);">
-<div style="position:absolute;right:-3.8rem;top:-4.2rem;width:12rem;height:12rem;border-radius:50%;background:radial-gradient(circle,rgba(255,112,67,0.26),rgba(255,112,67,0));"></div>
-<div style="position:absolute;left:-4rem;bottom:-5rem;width:14rem;height:14rem;border-radius:50%;background:radial-gradient(circle,rgba(33,150,243,0.18),rgba(33,150,243,0));"></div>
+<div markdown="1" style="position:relative;overflow:hidden;border:1px solid rgba(63,81,181,0.30);border-radius:1rem;padding:1.25rem 1.35rem;margin:0.8rem 0 1.5rem;background:linear-gradient(135deg,rgba(63,81,181,0.14),rgba(126,87,194,0.09) 46%,rgba(38,166,154,0.10));box-shadow:0 0.65rem 1.8rem rgba(0,0,0,0.10);">
+<div style="position:absolute;right:-3.8rem;top:-4.2rem;width:12rem;height:12rem;border-radius:50%;background:radial-gradient(circle,rgba(63,81,181,0.24),rgba(63,81,181,0));"></div>
+<div style="position:absolute;left:-4rem;bottom:-5rem;width:14rem;height:14rem;border-radius:50%;background:radial-gradient(circle,rgba(126,87,194,0.16),rgba(126,87,194,0));"></div>
 <div style="position:relative;z-index:1;">
-<span style="display:inline-block;padding:0.18rem 0.55rem;border-radius:999px;background:rgba(255,112,67,0.16);color:#e65100;font-size:0.78rem;font-weight:700;letter-spacing:0.02em;">AI 基础 · 第 8 站</span>
+<span style="display:inline-block;padding:0.18rem 0.55rem;border-radius:999px;background:rgba(63,81,181,0.16);color:#283593;font-size:0.78rem;font-weight:700;letter-spacing:0.02em;">AI 基础 · 第 8 站</span>
 <strong>Prompt</strong>负责说明这次任务，<strong>上下文</strong>决定模型当前能看到什么，<strong>记忆</strong>负责把长期信息重新带回现场。
 
 <div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:0.75rem;margin-top:1rem;">

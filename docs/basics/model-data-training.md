@@ -5,11 +5,11 @@ tags:
 
 # 模型、数据、训练与推理
 
-<div markdown="1" style="position:relative;overflow:hidden;border:1px solid rgba(255,112,67,0.28);border-radius:1rem;padding:1.25rem 1.35rem;margin:0.8rem 0 1.5rem;background:linear-gradient(135deg,rgba(255,112,67,0.14),rgba(63,81,181,0.08) 46%,rgba(0,188,212,0.10));box-shadow:0 0.65rem 1.8rem rgba(0,0,0,0.10);">
-<div style="position:absolute;right:-3.8rem;top:-4.2rem;width:12rem;height:12rem;border-radius:50%;background:radial-gradient(circle,rgba(255,112,67,0.26),rgba(255,112,67,0));"></div>
-<div style="position:absolute;left:-4rem;bottom:-5rem;width:14rem;height:14rem;border-radius:50%;background:radial-gradient(circle,rgba(33,150,243,0.18),rgba(33,150,243,0));"></div>
+<div markdown="1" style="position:relative;overflow:hidden;border:1px solid rgba(76,175,80,0.30);border-radius:1rem;padding:1.25rem 1.35rem;margin:0.8rem 0 1.5rem;background:linear-gradient(135deg,rgba(76,175,80,0.14),rgba(0,150,136,0.09) 46%,rgba(255,183,77,0.10));box-shadow:0 0.65rem 1.8rem rgba(0,0,0,0.10);">
+<div style="position:absolute;right:-3.8rem;top:-4.2rem;width:12rem;height:12rem;border-radius:50%;background:radial-gradient(circle,rgba(76,175,80,0.24),rgba(76,175,80,0));"></div>
+<div style="position:absolute;left:-4rem;bottom:-5rem;width:14rem;height:14rem;border-radius:50%;background:radial-gradient(circle,rgba(0,150,136,0.18),rgba(0,150,136,0));"></div>
 <div style="position:relative;z-index:1;">
-<span style="display:inline-block;padding:0.18rem 0.55rem;border-radius:999px;background:rgba(255,112,67,0.16);color:#e65100;font-size:0.78rem;font-weight:700;letter-spacing:0.02em;">AI 基础 · 第 6 站</span>
+<span style="display:inline-block;padding:0.18rem 0.55rem;border-radius:999px;background:rgba(76,175,80,0.16);color:#1b5e20;font-size:0.78rem;font-weight:700;letter-spacing:0.02em;">AI 基础 · 第 6 站</span>
 
 <strong>模型（Model）</strong>像一套会计算的规则，<strong>数据（Data）</strong>是它看过的材料，<strong>训练（Training）</strong>负责把规则调出来，<strong>推理（Inference）</strong>就是训练好的模型真正开始回答问题。
 

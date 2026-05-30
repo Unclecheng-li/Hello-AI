@@ -5,18 +5,26 @@ tags:
 
 # 什么是 LLM
 
-<div markdown="1" style="position:relative;border:1px solid rgba(126,87,194,0.26);border-radius:1rem;padding:1.1rem 1.2rem;margin:0.8rem 0 1.5rem;background:linear-gradient(180deg,rgba(28,27,43,0.06),rgba(126,87,194,0.08));overflow:hidden;">
-<div style="position:absolute;right:1rem;top:1rem;width:0.55rem;height:0.55rem;border-radius:50%;background:#7e57c2;box-shadow:-1rem 0 #26c6da,-2rem 0 #ffb74d;"></div>
-<div markdown="1" style="font-family:var(--md-code-font-family);font-size:0.92rem;line-height:1.8;padding:0.75rem 0.85rem;border-radius:0.75rem;background:var(--md-code-bg-color);border:1px solid var(--md-default-fg-color--lightest);margin-bottom:0.9rem;">
-<span style="color:#7e57c2;font-weight:700;">user</span>  帮我把这段话改得像人话一点  
-<span style="color:#26a69a;font-weight:700;">model</span>  可以，我先保留原意，再把句子拆短一点……
+<div markdown="1" style="position:relative;overflow:hidden;border:1px solid rgba(126,87,194,0.28);border-radius:1rem;padding:1.25rem 1.35rem;margin:0.8rem 0 1.5rem;background:linear-gradient(135deg,rgba(126,87,194,0.14),rgba(38,166,154,0.09) 48%,rgba(255,183,77,0.10));box-shadow:0 0.65rem 1.8rem rgba(0,0,0,0.10);">
+<div style="position:absolute;right:-3.8rem;top:-4.2rem;width:12rem;height:12rem;border-radius:50%;background:radial-gradient(circle,rgba(126,87,194,0.24),rgba(126,87,194,0));"></div>
+<div style="position:absolute;left:-4rem;bottom:-5rem;width:14rem;height:14rem;border-radius:50%;background:radial-gradient(circle,rgba(38,166,154,0.18),rgba(38,166,154,0));"></div>
+<div style="position:relative;z-index:1;">
+<span style="display:inline-block;padding:0.18rem 0.55rem;border-radius:999px;background:rgba(126,87,194,0.16);color:#5e35b1;font-size:0.78rem;font-weight:700;letter-spacing:0.02em;">AI 基础 · 第 4 站</span>
+
+<strong>LLM（Large Language Model，大语言模型）</strong>可以先理解成一台巨大的语言续写机器。它根据上下文预测后面最可能接什么，再一个 token 一个 token 地写下去。
+
+<div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:0.75rem;margin-top:1rem;">
+<div style="padding:0.8rem;border-radius:0.75rem;background:var(--md-default-bg-color);border:1px solid var(--md-default-fg-color--lightest);">
+<strong>输入</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">提示词和上下文</span>
 </div>
-
-LLM，全称 **Large Language Model**，中文叫「大语言模型」。
-
-先别急着把它想成一个懂你的大脑。更贴近它工作方式的说法是，它像一台巨大的语言续写机器。你给它一段文字，它根据上下文判断后面最可能接什么，然后一个 token 一个 token 地写下去。
-
-神奇的地方在于，当这台续写机器读过足够多文本、代码、网页、论文和对话之后，续写这件小事，会长出很多看起来很像理解、总结、翻译、写代码和推理的能力。
+<div style="padding:0.8rem;border-radius:0.75rem;background:var(--md-default-bg-color);border:1px solid var(--md-default-fg-color--lightest);">
+<strong>核心动作</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">预测下一个 token</span>
+</div>
+<div style="padding:0.8rem;border-radius:0.75rem;background:var(--md-default-bg-color);border:1px solid var(--md-default-fg-color--lightest);">
+<strong>输出</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">回答、总结、改写、代码</span>
+</div>
+</div>
+</div>
 </div>
 
 ## 先盯住那个「发送」按钮

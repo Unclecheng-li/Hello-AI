@@ -3,14 +3,14 @@
 Hello-AI 建议按下面顺序学习：
 
 ```mermaid
-flowchart TD
+flowchart LR
     A[AI 基础] --> B[Prompt 基础]
     B --> C[工具使用]
     C --> D[RAG]
     D --> E[Agent]
     E --> F[Build]
     F --> G[Eval]
-    G --> H[Safety]
+    G --> H[Security]
     H --> I[Lab]
 ```
 
