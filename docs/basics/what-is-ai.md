@@ -1,9 +1,30 @@
+---
+tags:
+  - AI 基础
+---
+
 # 什么是 AI
 
-AI 的全称是 Artificial Intelligence，中文叫「人工智能」。
+<div markdown="1" style="position:relative;overflow:hidden;border:1px solid rgba(63,81,181,0.28);border-radius:1rem;padding:1.25rem 1.35rem;margin:0.8rem 0 1.5rem;background:linear-gradient(135deg,rgba(63,81,181,0.14),rgba(0,188,212,0.09) 48%,rgba(255,112,67,0.10));box-shadow:0 0.65rem 1.8rem rgba(0,0,0,0.10);">
+<div style="position:absolute;right:-3.8rem;top:-4.2rem;width:12rem;height:12rem;border-radius:50%;background:radial-gradient(circle,rgba(63,81,181,0.24),rgba(63,81,181,0));"></div>
+<div style="position:absolute;left:-4rem;bottom:-5rem;width:14rem;height:14rem;border-radius:50%;background:radial-gradient(circle,rgba(0,188,212,0.18),rgba(0,188,212,0));"></div>
+<div style="position:relative;z-index:1;">
+<span style="display:inline-block;padding:0.18rem 0.55rem;border-radius:999px;background:rgba(63,81,181,0.16);color:#283593;font-size:0.78rem;font-weight:700;letter-spacing:0.02em;">AI 基础 · 第 1 站</span>
 
-<div style="border-left:4px solid var(--md-accent-fg-color);padding:0.8rem 1rem;margin:1rem 0 1.4rem;background:var(--md-code-bg-color);border-radius:0.35rem;">
-  <strong>先记住一句话：</strong>AI 可以先理解成一组能力，让计算机在某些任务上表现出“类似智能”的行为。
+<strong>AI（Artificial Intelligence，人工智能）</strong>可以先理解成一组能力，让计算机在某些任务上表现出「类似智能」的行为。
+
+<div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:0.75rem;margin-top:1rem;">
+<div style="padding:0.8rem;border-radius:0.75rem;background:var(--md-default-bg-color);border:1px solid var(--md-default-fg-color--lightest);">
+<strong>目标</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">让机器完成智能任务</span>
+</div>
+<div style="padding:0.8rem;border-radius:0.75rem;background:var(--md-default-bg-color);border:1px solid var(--md-default-fg-color--lightest);">
+<strong>能力</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">识别、预测、生成、规划</span>
+</div>
+<div style="padding:0.8rem;border-radius:0.75rem;background:var(--md-default-bg-color);border:1px solid var(--md-default-fg-color--lightest);">
+<strong>定位</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">机器学习和 LLM 都在其中</span>
+</div>
+</div>
+</div>
 </div>
 
 <figure markdown="1" style="margin:1.2rem 0;text-align:center;">
