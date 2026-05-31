@@ -101,7 +101,7 @@ flowchart LR
 
 文本是目前最成熟、最常见的 AI 输入。
 
-你在聊天框里输入一句话，模型会先把它切成 Token，再通过 Embedding 变成向量。这个过程在 [Token、Embedding 与上下文窗口](../token-embedding-context/) 里会详细讲。
+你在聊天框里输入一句话，模型会先把它切成 Token，再通过 Embedding 变成向量。这个过程在 [Token、Embedding 与上下文窗口](token-embedding-context.md) 里会详细讲。
 
 文本 AI 擅长：
 

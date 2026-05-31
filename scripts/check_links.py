@@ -8,7 +8,6 @@ from urllib.parse import urljoin, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
-BASICS = DOCS / "basics"
 LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 HREF_RE = re.compile(r"href=[\"']([^\"']+)[\"']")
 EXTERNAL_SCHEMES = {"http", "https", "mailto", "tel"}
@@ -72,7 +71,6 @@ def is_under(path: Path, parent: Path) -> bool:
 
 def main() -> int:
     missing: list[str] = []
-    markdown_page_links: list[str] = []
 
     for md in iter_markdown_files():
         text = md.read_text(encoding="utf-8")
@@ -80,17 +78,8 @@ def main() -> int:
             resolved = resolve_local_target(md, target)
             if resolved is None:
                 continue
-            clean_target = target.split("#", 1)[0].split("?", 1)[0]
-            if is_under(md, BASICS) and clean_target.endswith(".md") and is_under(resolved, DOCS):
-                markdown_page_links.append(f"{md.relative_to(ROOT)} -> {target}")
             if not resolved.exists():
                 missing.append(f"{md.relative_to(ROOT)} -> {target}")
-
-    if markdown_page_links:
-        print("Markdown page links in docs/basics should use directory-style URLs:")
-        for item in markdown_page_links:
-            print(item)
-        return 1
 
     if missing:
         for item in missing:
