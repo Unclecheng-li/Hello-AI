@@ -115,8 +115,9 @@ nav:
   - Home: index.md
   - 前言:
       - 前言总览: preface/index.md
-      - 新手起步: preface/start.md
+      - 为什么学 AI: preface/why.md
       - 学习路线: preface/roadmap.md
+      - 常见顾虑: preface/faq.md
   - AI 基础:
       - 基础总览: basics/index.md
       - 什么是 AI: basics/what-is-ai.md

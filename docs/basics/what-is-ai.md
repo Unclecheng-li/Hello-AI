@@ -32,7 +32,7 @@ tags:
 <figcaption style="margin-top:0.55rem;font-size:0.86rem;color:var(--md-default-fg-color--light);">图1：1956 年达特茅斯会议的八位参会者</figcaption>
 </figure>
 
-这个词诞生于 1956 年。那年夏天，一群科学家在美国达特茅斯学院开了两个月的会，第一次把**「让机器像人一样思考」**这件事正式命名为人工智能。参会的人里包括 **John McCarthy、Marvin Minsky、Claude Shannon、Herbert Simon**——每一个名字后来都影响了计算机科学的走向。
+**「人工智能」**这个词诞生于 1956 年。那年夏天，一群科学家在美国达特茅斯学院开了两个月的会，第一次把**「让机器像人一样思考」**这件事正式命名为人工智能。参会的人里包括 **John McCarthy、Marvin Minsky、Claude Shannon、Herbert Simon**——每一个名字后来都影响了计算机科学的走向。
 
 AI 到底怎么定义？这个问题从 1956 年一路吵到今天，学界和产业界各有说法。
 

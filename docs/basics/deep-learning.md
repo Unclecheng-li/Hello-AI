@@ -359,8 +359,8 @@ AlexNet 的成功有三个关键原因：
 
 ## 延伸阅读
 
-- [什么是机器学习](../machine-learning/) —— 回顾机器学习的大框架，理解深度学习在其中的位置
-- [什么是 LLM](../what-is-llm/) —— 了解深度学习在语言方向上的最新产物：大语言模型
+- [什么是机器学习](machine-learning.md) —— 回顾机器学习的大框架，理解深度学习在其中的位置
+- [什么是 LLM](what-is-llm.md) —— 了解深度学习在语言方向上的最新产物：大语言模型
 
 ## 下一步
 
@@ -368,7 +368,7 @@ AlexNet 的成功有三个关键原因：
 
 理解了深度学习之后，下一站建议看：
 
-<a href="../what-is-llm/" style="display:block;margin-top:0.75rem;padding:0.85rem 1rem;border-radius:0.65rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<a href="what-is-llm.md" style="display:block;margin-top:0.75rem;padding:0.85rem 1rem;border-radius:0.65rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
   <strong>什么是 LLM →</strong><br>
   <span style="color:var(--md-default-fg-color--light);font-size:0.92rem;">了解深度学习在语言方向上的关键产物——大语言模型如何生成文字、接住上下文。</span>
 </a>

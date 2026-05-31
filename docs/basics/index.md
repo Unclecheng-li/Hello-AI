@@ -76,10 +76,10 @@ flowchart LR
 
 | 阶段 | 你要建立的直觉 | 对应章节 |
 | --- | --- | --- |
-| 认识 AI 大地图 | AI 是总称，机器学习是其中一条路线，深度学习是现代 AI 的关键技术分支 | [什么是 AI](what-is-ai/)、[机器学习](machine-learning/)、[深度学习](deep-learning/) |
-| 进入 LLM 世界 | LLM 生成文字靠 token 级预测，现代生成式 AI 又把文本、图像、语音、视频接到一起 | [什么是 LLM](what-is-llm/)、[多模态 AI](multimodal-ai/) |
-| 拆开模型工作流 | 数据、训练、推理、Token、Embedding、上下文窗口决定了模型能力和调用成本 | [模型、数据、训练与推理](model-data-training/)、[Token、Embedding 与上下文窗口](token-embedding-context/) |
-| 学会稳定使用 | Prompt 组织任务现场，采样参数影响输出风格，事实核查处理幻觉风险 | [Prompt、上下文和记忆](prompt-context-memory/)、[温度与采样参数](temperature-sampling/)、[为什么模型会胡说](hallucination/) |
+| 认识 AI 大地图 | AI 是总称，机器学习是其中一条路线，深度学习是现代 AI 的关键技术分支 | [什么是 AI](what-is-ai.md)、[机器学习](machine-learning.md)、[深度学习](deep-learning.md) |
+| 进入 LLM 世界 | LLM 生成文字靠 token 级预测，现代生成式 AI 又把文本、图像、语音、视频接到一起 | [什么是 LLM](what-is-llm.md)、[多模态 AI](multimodal-ai.md) |
+| 拆开模型工作流 | 数据、训练、推理、Token、Embedding、上下文窗口决定了模型能力和调用成本 | [模型、数据、训练与推理](model-data-training.md)、[Token、Embedding 与上下文窗口](token-embedding-context.md) |
+| 学会稳定使用 | Prompt 组织任务现场，采样参数影响输出风格，事实核查处理幻觉风险 | [Prompt、上下文和记忆](prompt-context-memory.md)、[温度与采样参数](temperature-sampling.md)、[为什么模型会胡说](hallucination.md) |
 
 IBM 在 [AI、机器学习、深度学习与神经网络的对比文章](https://www.ibm.com/think/topics/ai-vs-machine-learning-vs-deep-learning-vs-neural-networks)中把四者整理成层级关系：AI 是最宽的概念，机器学习属于 AI，深度学习属于机器学习，神经网络是深度学习算法的重要基础。Google Cloud 的 [AI 与机器学习介绍](https://cloud.google.com/learn/artificial-intelligence-vs-machine-learning)也采用了类似解释：AI 关注让系统感知、推理、行动和调整，机器学习关注从数据中学习。
 
@@ -88,16 +88,16 @@ IBM 在 [AI、机器学习、深度学习与神经网络的对比文章](https:/
 直接读这四篇。
 
 <div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:0.85rem;margin:1.1rem 0 1.5rem;">
-<a href="what-is-ai/" style="display:block;text-decoration:none;color:inherit;padding:1rem;border-radius:0.9rem;border:1px solid rgba(255,112,67,0.26);background:linear-gradient(135deg,rgba(255,112,67,0.11),rgba(255,112,67,0.02));">
+<a href="what-is-ai.md" style="display:block;text-decoration:none;color:inherit;padding:1rem;border-radius:0.9rem;border:1px solid rgba(255,112,67,0.26);background:linear-gradient(135deg,rgba(255,112,67,0.11),rgba(255,112,67,0.02));">
 <strong>1. 什么是 AI</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">先知道这张大地图有多大</span>
 </a>
-<a href="what-is-llm/" style="display:block;text-decoration:none;color:inherit;padding:1rem;border-radius:0.9rem;border:1px solid rgba(126,87,194,0.26);background:linear-gradient(135deg,rgba(126,87,194,0.11),rgba(126,87,194,0.02));">
+<a href="what-is-llm.md" style="display:block;text-decoration:none;color:inherit;padding:1rem;border-radius:0.9rem;border:1px solid rgba(126,87,194,0.26);background:linear-gradient(135deg,rgba(126,87,194,0.11),rgba(126,87,194,0.02));">
 <strong>2. 什么是 LLM</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">理解聊天模型怎么生成文字</span>
 </a>
-<a href="prompt-context-memory/" style="display:block;text-decoration:none;color:inherit;padding:1rem;border-radius:0.9rem;border:1px solid rgba(33,150,243,0.26);background:linear-gradient(135deg,rgba(33,150,243,0.10),rgba(33,150,243,0.02));">
+<a href="prompt-context-memory.md" style="display:block;text-decoration:none;color:inherit;padding:1rem;border-radius:0.9rem;border:1px solid rgba(33,150,243,0.26);background:linear-gradient(135deg,rgba(33,150,243,0.10),rgba(33,150,243,0.02));">
 <strong>3. Prompt、上下文和记忆</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">学会组织一场有效对话</span>
 </a>
-<a href="hallucination/" style="display:block;text-decoration:none;color:inherit;padding:1rem;border-radius:0.9rem;border:1px solid rgba(233,30,99,0.26);background:linear-gradient(135deg,rgba(233,30,99,0.10),rgba(233,30,99,0.02));">
+<a href="hallucination.md" style="display:block;text-decoration:none;color:inherit;padding:1rem;border-radius:0.9rem;border:1px solid rgba(233,30,99,0.26);background:linear-gradient(135deg,rgba(233,30,99,0.10),rgba(233,30,99,0.02));">
 <strong>4. 为什么模型会胡说</strong><br><span style="color:var(--md-default-fg-color--light);font-size:0.9rem;">知道哪些回答必须回到来源核查</span>
 </a>
 </div>
@@ -110,58 +110,58 @@ IBM 在 [AI、机器学习、深度学习与神经网络的对比文章](https:/
 
 <div markdown="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:0.85rem;margin:1.1rem 0 1.5rem;">
 <div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-default-bg-color);box-shadow:0 0.25rem 0.9rem rgba(0,0,0,0.05);">
-<strong>第 1 站：[什么是 AI](what-is-ai/)</strong>
+<strong>第 1 站：[什么是 AI](what-is-ai.md)</strong>
 
 从达特茅斯会议、图灵测试、AI 三次浪潮讲起，先把人工智能放进历史里。
 </div>
 <div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-default-bg-color);box-shadow:0 0.25rem 0.9rem rgba(0,0,0,0.05);">
-<strong>第 2 站：[机器学习](machine-learning/)</strong>
+<strong>第 2 站：[机器学习](machine-learning.md)</strong>
 
 理解计算机怎么从例子里学规律，分清监督学习、无监督学习和强化学习。
 </div>
 <div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-default-bg-color);box-shadow:0 0.25rem 0.9rem rgba(0,0,0,0.05);">
-<strong>第 3 站：[深度学习](deep-learning/)</strong>
+<strong>第 3 站：[深度学习](deep-learning.md)</strong>
 
 看懂神经网络的层级结构，以及 AlexNet 之后深度学习为什么突然爆发。
 </div>
 <div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-default-bg-color);box-shadow:0 0.25rem 0.9rem rgba(0,0,0,0.05);">
-<strong>第 4 站：[什么是 LLM](what-is-llm/)</strong>
+<strong>第 4 站：[什么是 LLM](what-is-llm.md)</strong>
 
 把聊天窗口拆开，看见 token、上下文、Transformer 和下一个 token 预测。
 </div>
 <div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-default-bg-color);box-shadow:0 0.25rem 0.9rem rgba(0,0,0,0.05);">
-<strong>第 5 站：[多模态 AI](multimodal-ai/)</strong>
+<strong>第 5 站：[多模态 AI](multimodal-ai.md)</strong>
 
 把文字、图片、语音和视频放进同一张图里，理解「统一入口」怎么形成。
 </div>
 <div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-default-bg-color);box-shadow:0 0.25rem 0.9rem rgba(0,0,0,0.05);">
-<strong>第 6 站：[模型、数据、训练与推理](model-data-training/)</strong>
+<strong>第 6 站：[模型、数据、训练与推理](model-data-training.md)</strong>
 
 看懂模型从原始数据到上线服务的完整链路，也顺手理解为什么 AI 调用按 token 收费。
 </div>
 <div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-default-bg-color);box-shadow:0 0.25rem 0.9rem rgba(0,0,0,0.05);">
-<strong>第 7 站：[Token、Embedding 与上下文窗口](token-embedding-context/)</strong>
+<strong>第 7 站：[Token、Embedding 与上下文窗口](token-embedding-context.md)</strong>
 
 理解文字如何变成数字，语义如何进入向量空间，上下文窗口为什么会限制模型记忆。
 </div>
 <div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-default-bg-color);box-shadow:0 0.25rem 0.9rem rgba(0,0,0,0.05);">
-<strong>第 8 站：[Prompt、上下文和记忆](prompt-context-memory/)</strong>
+<strong>第 8 站：[Prompt、上下文和记忆](prompt-context-memory.md)</strong>
 
 分清用户输入、系统规则、聊天历史、长期记忆和工具消息，各自负责什么。
 </div>
 <div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-default-bg-color);box-shadow:0 0.25rem 0.9rem rgba(0,0,0,0.05);">
-<strong>第 9 站：[温度与采样参数](temperature-sampling/)</strong>
+<strong>第 9 站：[温度与采样参数](temperature-sampling.md)</strong>
 
 看懂 temperature、top-k、top-p、seed 和惩罚项，知道怎么在稳定与发散之间调节。
 </div>
 <div markdown="1" style="padding:1rem;border-radius:0.9rem;border:1px solid var(--md-default-fg-color--lightest);background:var(--md-default-bg-color);box-shadow:0 0.25rem 0.9rem rgba(0,0,0,0.05);">
-<strong>第 10 站：[为什么模型会胡说](hallucination/)</strong>
+<strong>第 10 站：[为什么模型会胡说](hallucination.md)</strong>
 
 理解幻觉、事实核查、Grounding、引用证据和高风险场景里的人工复核。
 </div>
 </div>
 
-Google 的 [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course) 也采用类似路径：先学回归、分类、数据处理、泛化和过拟合，再进入神经网络、Embedding 和大型语言模型。Hugging Face 的 [NLP Course](https://huggingface.co/learn/nlp-course/chapter1/1) 则把 Transformer、pipeline、Tokenizer、Encoder / Decoder 架构作为进入现代 NLP 和 LLM 的入口。
+Google 的 [Machine Learning Crash Course](https://developers.google.com/machine-learning.mdcrash-course) 也采用类似路径：先学回归、分类、数据处理、泛化和过拟合，再进入神经网络、Embedding 和大型语言模型。Hugging Face 的 [NLP Course](https://huggingface.co/learn/nlp-course/chapter1/1) 则把 Transformer、pipeline、Tokenizer、Encoder / Decoder 架构作为进入现代 NLP 和 LLM 的入口。
 
 ## 学 AI 基础时，抓住三条线
 
@@ -229,7 +229,7 @@ Google Vertex AI 的 [Grounding 文档](https://docs.cloud.google.com/vertex-ai/
 
 准备开始 AI 基础章节时，下一站建议看：
 
-<a href="what-is-ai/" style="display:block;margin-top:0.75rem;padding:0.85rem 1rem;border-radius:0.65rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
+<a href="what-is-ai.md" style="display:block;margin-top:0.75rem;padding:0.85rem 1rem;border-radius:0.65rem;background:var(--md-default-bg-color);text-decoration:none;border:1px solid var(--md-default-fg-color--lightest);">
   <strong>什么是 AI →</strong><br>
   <span style="color:var(--md-default-fg-color--light);font-size:0.92rem;">从人工智能的大地图开始，先分清 AI、机器学习、深度学习和大语言模型的位置。</span>
 </a>
