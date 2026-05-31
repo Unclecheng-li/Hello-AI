@@ -89,21 +89,21 @@ jobs:
             if [ -z "$base_sha" ] || [ "$base_sha" = "$zero_sha" ]; then
               scope="all"
             else
-              case "$base_sha$head_sha" in
-                *[!0-9a-fA-F]*)
-                  echo "Invalid git SHA detected for docs lint scope." >&2
-                  exit 1
-                  ;;
-              esac
-
-              git diff --name-only --diff-filter=ACMR "$base_sha" "$head_sha" -- \
-                docs mkdocs.yml DESIGN.md scripts/docs_lint_report.py > docs-lint-changed-files.txt
-
-              if grep -Eq '^(mkdocs\.yml|DESIGN\.md|scripts/docs_lint_report\.py)$' docs-lint-changed-files.txt; then
+              if ! [[ "$base_sha$head_sha" =~ ^[0-9a-fA-F]+$ ]]; then
+                echo "Invalid git SHA detected for docs lint scope, falling back to all." >&2
                 scope="all"
-              else
-                grep -E '^docs/.*\.md$' docs-lint-changed-files.txt > docs-lint-files.txt || true
               fi
+            fi
+          fi
+
+          if [ "$scope" = "changed" ]; then
+            git diff --name-only --diff-filter=ACMR "$base_sha" "$head_sha" -- \
+              docs mkdocs.yml DESIGN.md scripts/docs_lint_report.py > docs-lint-changed-files.txt
+
+            if grep -Eq '^(mkdocs\.yml|DESIGN\.md|scripts/docs_lint_report\.py)$' docs-lint-changed-files.txt; then
+              scope="all"
+            else
+              grep -E '^docs/.*\.md$' docs-lint-changed-files.txt > docs-lint-files.txt || true
             fi
           fi
 
